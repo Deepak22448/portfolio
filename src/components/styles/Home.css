@@ -1,0 +1,37 @@
+.intro{
+    background: #151515 url(../../../public/intro-bg.jpg) no-repeat center bottom;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    min-height: 720px;
+}
+
+.h4_intro{
+    font-family: "poppins-bold", sans-serif;
+}
+
+.h1_intro{
+    font-family: "poppins-medium", sans-serif;
+}
+
+.h5_intro{
+    font-family: "lora-regular", serif;
+}
+
+.intro_partition::after{
+    content: "|";
+    padding-inline: 2rem;
+    color:rgba(255, 255, 255, 0.3);
+}
+
+
+@media screen and (max-width:768px){
+    .intro_partition::after{
+        content: "";
+        padding: 0;
+    } 
+}

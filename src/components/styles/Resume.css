@@ -1,0 +1,25 @@
+.resume_education_container::before{
+    content: "";
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    background: #000;
+    left: 1.476rem;
+    border-radius: 5px;
+}
+
+@media screen and (min-width:1026px){
+    .resume_education_container::before{
+        content: "";
+        width: 3px;
+        height: 100%;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.743);
+        left: 18.476rem;
+        border-radius: 5px;
+    }
+    .cap_icon{
+        left: 17rem;
+        top: 1rem;
+    }
+}
