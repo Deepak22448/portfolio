@@ -6,8 +6,10 @@
     background-attachment: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: -2;
     min-height: 720px;
+}
+html{
+    scroll-behavior: smooth;
 }
 
 .h4_intro{
@@ -22,16 +24,26 @@
     font-family: "lora-regular", serif;
 }
 
-.intro_partition::after{
+
+
+#animateText_line::after{
+    content: "|";
+    color: #ff0077;
+    animation: blink 1s  infinite ;
+}
+@keyframes blink {
+    from{
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+
+@media screen and (min-width:768px){
+    .intro_partition::after{
     content: "|";
     padding-inline: 2rem;
     color:rgba(255, 255, 255, 0.3);
 }
-
-
-@media screen and (max-width:768px){
-    .intro_partition::after{
-        content: "";
-        padding: 0;
-    } 
 }

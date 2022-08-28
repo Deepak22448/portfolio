@@ -1,6 +1,42 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import ProgressBar from "./ProgressBar";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const About = () => {
+  const aboutRef = useRef();
+  const profileData = [
+    {
+      title: "FULLNAME:",
+      body: "Deepak Sharma.",
+    },
+    {
+      title: "BIRTH DATE:",
+      body: "October 28,2005",
+    },
+    {
+      title: "EMAIL",
+      body: "deepaksandeep33@gmail.com",
+    },
+    {
+      title: "AGE",
+      body: "16",
+    },
+  ];
+  const gsapUtilSelector = gsap.utils.selector(aboutRef);
+  useEffect(() => {
+    gsap.from(gsapUtilSelector(".progress_bar"), {
+      scrollTrigger: {
+        trigger: ".progress_bar",
+        toggleActions: "restart none none none",
+      },
+      width: "0px",
+      duration: 3,
+      ease: "power1",
+    });
+  }, []);
+
   const skillsData = [
     {
       number: 90,
@@ -8,7 +44,7 @@ const About = () => {
     },
     {
       number: 80,
-      name: "Css",
+      name: "CSS",
     },
     {
       number: 80,
@@ -21,66 +57,67 @@ const About = () => {
   ];
   return (
     <>
-      <section className="about pt-24 container mx-auto">
+      <section
+        className="about pt-24 container mx-auto"
+        ref={aboutRef}
+        id="about"
+      >
         <article>
-          <h5 className="text-[#cc005f] tracking-widest text-center font-bold">
+          <h5 className="text-[#cc005f] tracking-widest  font-bold text-center">
             ABOUT
           </h5>
           <h3 className="text-3xl text-center font-bold">
             Let me introduce myself.
           </h3>
-          <img
-            src="profile.jpg"
-            alt="Deepak Sharma profile"
-            className="w-24 h-24 rounded-full mx-auto mt-6 mb-4"
-          />
-          <p className="px-6 leading-7 text-lg font-light opacity-70">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-            quo dolore voluptates earum aliquid. Expedita magnam saepe
-            voluptatibus accusamus, quam laboriosam doloribus quod eos,
-            consectetur voluptatem laudantium vitae et omnis. Lorem ipsum dolor
-            sit amet consectetur adipisicing elit. Amet quod numquam nam ut
-            aperiam dolorem mollitia, aspernatur, nisi quisquam corporis eos
-            eum! Id blanditiis vel nemo harum reprehenderit! Veniam, enim!
-          </p>
+          <div className="md:flex justify-center items-center mt-3">
+            <img
+              src="profile.jpg"
+              alt="Deepak Sharma profile"
+              className="w-36 h-36 rounded-full mx-auto mt-6 mb-4 md:mx-0 md:items-center"
+              loading="lazy"
+            />
+            <p className="px-6 leading-7 text-lg font-light opacity-70  max-w-lg mx-auto md:mx-0">
+              Hello, I am Deepak Sharma from Hyderabad . I am 16 years old
+              frontend , backend developer and UI/ UX designer . I am capable of
+              making things you desire.
+            </p>
+          </div>
         </article>
 
         {/*  Profile and Skills Container*/}
-        <div className="md:flex justify-between items-center md:px-16">
+
+        <div className="md:flex justify-between  md:px-16 w-full items-baseline gap-2">
           {/* Profile */}
-          <article className="about_profile pt-20  font-bold md:pt-10">
-            <h1 className="tracking-widest text-center text-xl md:text-3xl">
+          <article className="about_profile pt-5 font-bold md:w-1/2 px-6 ">
+            <h1 className="tracking-widest text-center text-xl md:text-3xl mb-3 ">
               PROFILE
             </h1>
-            <p className="px-6 md:px-4 text-lg font-light opacity-70">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-              voluptates, nihil aut excepturi magni delectus maiores repudiandae
-              harum saepe corrupti est explicabo. Iste dolorum aliquid nisi
-              recusandae veniam repellat officiis.
+            <p className=" text-lg font-light opacity-70 px-4 md:px-2 text-justify">
+              I am 16 years old Right now i am doing my B.tech in computer
+              science and Engineering and making enteresging projects to push i
+              self a level up.
             </p>
+            {/* Mapping profile data */}
             <div className="pt-5 px-6 md:px-4">
-              <h4 className="font-bold">FULLNAME:</h4>
-              <p className="opacity-80 pb-3 font-light">Deepak Sharma</p>
-              <h4 className="font-bold">BIRTH DATE:</h4>
-              <p className="opacity-80 font-light pb-3">October 28,2005</p>
-              <h4 className="font-bold">EMAIL:</h4>
-              <p className="opacity-80 font-light pb-3">
-                deepaksandeep33@gmail.com
-              </p>
-              <h4 className="font-bold">JOB:</h4>
-              <p className="opacity-80 font-light">Student</p>
+              {profileData.map(({ title, body }) => {
+                return (
+                  <div key={title} className="pb-3">
+                    <h4 className="font-bold">{title}</h4>
+                    <p className="opacity-80 pb-3 font-light">{body}</p>
+                  </div>
+                );
+              })}
             </div>
           </article>
           {/* Skills */}
-          <article className="about_skills pt-5 px-6">
-            <h1 className="tracking-widest text-center text-xl md:text-3xl pb-3 font-bold">
+          <article className="about_skills pt-5 px-6 md:w-1/2">
+            <h1 className="tracking-widest text-center text-xl md:text-3xl pb-3 font-bold ">
               SKILLS
             </h1>
-            <p className="px-6 md:px-4 text-lg font-light opacity-70 ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-              voluptates, nihil aut excepturi magni delectus maiores repudiandae
-              harum saepe corrupti est explicabo. Iste dolorum aliquid nisi
-              recusandae veniam repellat officiis.
+            <p className="px-0 md:px-4 text-lg font-light opacity-70 text-justify">
+              I am a MERN stack developer I am very fluent with web technologies
+              like JavaScript , typescript and always try build things with
+              modern technique to keep my self upto date.dit
             </p>
 
             {skillsData.map(({ number, name }) => {
@@ -94,12 +131,26 @@ const About = () => {
           </article>
         </div>
         <div className="btns_container w-full flex flex-col justify-center items-center mt-10 md:flex-row gap-4 mb-24">
-          <button className="tracking-widest text-black bg-white border border-black w-[80%] py-3 md:max-w-xs">
-            HIRE ME
-          </button>
-          <button className="tracking-widest text-white bg-black  w-[80%]  py-3 md:max-w-xs">
-            DOWNLOAD CV
-          </button>
+          <a
+            href="https://www.linkedin.com/in/deepak-sharma-725a56220"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border-black w-[80%] py-3 md:max-w-xs border"
+          >
+            <button className="tracking-widest text-black bg-white text-center w-full">
+              HIRE ME
+            </button>
+          </a>
+
+          <a
+            href="DeepakSharma_Resume.pdf"
+            download
+            className="border-black w-[80%] py-3 md:max-w-xs border bg-black"
+          >
+            <button className="tracking-widest text-white  w-full ">
+              DOWNLOAD CV
+            </button>
+          </a>
         </div>
       </section>
     </>
