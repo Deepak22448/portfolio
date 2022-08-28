@@ -88,13 +88,13 @@ const About = () => {
 
         <div className="md:flex justify-between  md:px-16 w-full items-baseline gap-2">
           {/* Profile */}
-          <article className="about_profile pt-5 font-bold md:w-1/2 px-6 ">
+          <article className="about_profile pt-5 font-bold md:w-1/2 px-2 ">
             <h1 className="tracking-widest text-center text-xl md:text-3xl mb-3 ">
               PROFILE
             </h1>
             <p className=" text-lg font-light opacity-70 px-4 md:px-2 text-justify">
               I am 16 years old Right now i am doing my B.tech in computer
-              science and Engineering and making enteresging projects to push i
+              science and Engineering and making interesting projects to push my
               self a level up.
             </p>
             {/* Mapping profile data */}
@@ -114,10 +114,10 @@ const About = () => {
             <h1 className="tracking-widest text-center text-xl md:text-3xl pb-3 font-bold ">
               SKILLS
             </h1>
-            <p className="px-0 md:px-4 text-lg font-light opacity-70 text-justify">
+            <p className="px-0 md:px-4 text-lg font-light opacity-70 text-justify mb-2">
               I am a MERN stack developer I am very fluent with web technologies
               like JavaScript , typescript and always try build things with
-              modern technique to keep my self upto date.dit
+              modern technique to keep my self upto date.
             </p>
 
             {skillsData.map(({ number, name }) => {

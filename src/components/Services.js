@@ -81,7 +81,9 @@ const Services = () => {
               <h2 className="font-bold text-2xl text-white text-center py-3">
                 {title}
               </h2>
-              <p className="text-slate-400 sm:px-9 md:px-1">{body}</p>
+              <p className="text-slate-400 sm:px-9 md:px-1 text-justify">
+                {body}
+              </p>
             </div>
           );
         })}

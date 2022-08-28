@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./styles/NavBar.css";
 import { gsap } from "gsap";
+import { useLayoutEffect } from "react";
 
 const NavBar = () => {
   const navRef = useRef(null);
@@ -47,7 +48,7 @@ const NavBar = () => {
 
   const linksLoadAnimationMobile = () => {
     gsap.from(gsapUtilsSelector(".nav_link"), {
-      duration: 0.4,
+      duration: 0.2,
       stagger: 0.1,
       x: "100%",
       opacity: 0,
