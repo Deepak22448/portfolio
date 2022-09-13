@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import ProgressBar from "./ProgressBar";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -25,7 +25,7 @@ const About = () => {
     },
   ];
   const gsapUtilSelector = gsap.utils.selector(aboutRef);
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.from(gsapUtilSelector(".progress_bar"), {
       scrollTrigger: {
         trigger: ".progress_bar",
@@ -114,7 +114,7 @@ const About = () => {
             <h1 className="tracking-widest text-center text-xl md:text-3xl pb-3 font-bold ">
               SKILLS
             </h1>
-            <p className="px-0 md:px-4 text-lg font-light opacity-70 text-justify mb-2">
+            <p className="px-0 text-lg font-light opacity-70 text-justify mb-2">
               I am a MERN stack developer I am very fluent with web technologies
               like JavaScript , typescript and always try build things with
               modern technique to keep my self upto date.
