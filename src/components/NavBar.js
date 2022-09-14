@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./styles/NavBar.css";
 import { gsap } from "gsap";
 import { useLayoutEffect } from "react";
@@ -7,6 +7,7 @@ const NavBar = () => {
   const navRef = useRef(null);
   const gsapUtilsSelector = gsap.utils.selector(navRef);
   const [activeMenu, setActiveMenu] = useState(false);
+  const [isNavAnimationPlaying, setIsNavAnimationPlaying] = useState(false);
 
   const linksName = [
     {
@@ -26,14 +27,22 @@ const NavBar = () => {
     },
   ];
 
-  useEffect(() => {
-    navLoadAnimation();
+  useLayoutEffect(() => {
+    // Do not play the animation if its a Mobile.
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) === false
+    ) {
+      navLoadAnimation();
+    }
   }, []);
 
   const toggleMenu = () => {
     document.querySelector(".nav_left").classList.toggle("translate-x-[200%]");
     setActiveMenu((prev) => !prev);
-    linksLoadAnimationMobile();
+    // Only play the animation if the previous animation is not playing .
+    if (!activeMenu) linksLoadAnimationMobile();
   };
 
   const navLoadAnimation = () => {
@@ -47,13 +56,32 @@ const NavBar = () => {
   };
 
   const linksLoadAnimationMobile = () => {
-    gsap.from(gsapUtilsSelector(".nav_link"), {
-      duration: 0.2,
-      stagger: 0.1,
-      x: "100%",
-      opacity: 0,
-    });
+    !isNavAnimationPlaying &&
+      gsap.from(gsapUtilsSelector(".nav_link"), {
+        duration: 0.2,
+        stagger: 0.1,
+        x: "100%",
+        opacity: 0,
+        onStart() {
+          setIsNavAnimationPlaying(true);
+        },
+        onComplete() {
+          setIsNavAnimationPlaying(false);
+        },
+      });
   };
+
+  // Hide Navlinks if the user click on the DOM if the target element is not menu or nav_wrapper.
+  document.addEventListener("click", (event) => {
+    if (
+      !event.target.classList.contains("menu") &&
+      !event.target.classList.contains("nav_wrapper")
+    ) {
+      document.querySelector(".nav_left").classList.add("translate-x-[200%]");
+      setActiveMenu(false);
+    }
+  });
+
   return (
     <>
       <header
