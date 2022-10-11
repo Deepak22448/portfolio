@@ -76,7 +76,7 @@ const About = () => {
               className="w-36 h-36 rounded-full mx-auto mt-6 mb-4 md:mx-0 md:items-center"
               loading="lazy"
             />
-            <p className="px-6 leading-7 text-lg font-light opacity-70  max-w-lg mx-auto md:mx-0">
+            <p className="px-6 leading-7 text-lg font-light opacity-70  max-w-lg mx-auto md:mx-0 text-justify">
               Hello, I am Deepak Sharma from Hyderabad . I am 16 years old
               frontend , backend developer and UI/ UX designer . I am capable of
               making things you desire.
