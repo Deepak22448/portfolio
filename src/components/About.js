@@ -21,7 +21,7 @@ const About = () => {
     },
     {
       title: "AGE",
-      body: "16",
+      body: "17",
     },
   ];
   const gsapUtilSelector = gsap.utils.selector(aboutRef);
