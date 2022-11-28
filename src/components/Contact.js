@@ -18,7 +18,7 @@ const Contact = () => {
       type: "email",
       name: "email",
       id: "email",
-      placeholder: "Eamil",
+      placeholder: "Email",
     },
     {
       type: "text",

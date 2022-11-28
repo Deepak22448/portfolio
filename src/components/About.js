@@ -6,6 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const aboutRef = useRef();
+  const age = 17;
   const profileData = [
     {
       title: "FULLNAME:",
@@ -21,7 +22,7 @@ const About = () => {
     },
     {
       title: "AGE",
-      body: "17",
+      body: age,
     },
   ];
   const gsapUtilSelector = gsap.utils.selector(aboutRef);
@@ -77,9 +78,9 @@ const About = () => {
               loading="lazy"
             />
             <p className="px-6 leading-7 text-lg font-light opacity-70  max-w-lg mx-auto md:mx-0 text-justify">
-              Hello, I am Deepak Sharma from Hyderabad . I am 16 years old
-              frontend , backend developer and UI/ UX designer . I am capable of
-              making things you desire.
+              Hello, I am Deepak Sharma from Hyderabad . I am
+              {" " + age} years old frontend , backend developer and UI/ UX
+              designer . I am capable of making things you desire.
             </p>
           </div>
         </article>
@@ -93,9 +94,9 @@ const About = () => {
               PROFILE
             </h1>
             <p className=" text-lg font-light opacity-70 px-4 md:px-2 text-justify">
-              I am 16 years old Right now i am doing my B.tech in computer
-              science and Engineering and making interesting projects to push my
-              self a level up.
+              I am {" " + age} years old Right now i am doing my B.tech in
+              computer science and Engineering and making interesting projects
+              to push my self a level up.
             </p>
             {/* Mapping profile data */}
             <div className="pt-5 px-6 md:px-4">
